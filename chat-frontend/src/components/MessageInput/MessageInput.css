@@ -1,17 +1,20 @@
 .input-area {
  display: flex;
  padding: 15px;
- background: white;
+ background: black;
  border-top: 1px solid #e3e3e3;
  align-items: center;
+ width: 500px;
 }
 
 .msg-input {
- flex: 1;
+ height: 1.5rem;
+ flex: 2;
  margin: 0 12px;
  padding: 12px;
  border-radius: 10px;
  border: 1px solid #ccc;
+ font-size: 18px;
 }
 
 .send-btn {

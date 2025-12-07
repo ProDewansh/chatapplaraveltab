@@ -6,6 +6,20 @@
  flex-direction: column;
 }
 
+/* .top-bar {
+ padding: 10px;
+ background-color: black;
+ 
+}
+
+.top-bar input {
+ width: 80%;
+ border-radius: 20px;
+ padding: 10px;
+ border-radius: 10px;
+ border: 1px solid #ccc;
+} */
+
 .top-bar {
  padding: 10px;
  background-color: black;
@@ -13,9 +27,10 @@
 
 .top-bar input {
  width: 80%;
- padding: 10px;
- border-radius: 10px;
+ padding: 10px 14px;        /* thoda left-right space */
+ border-radius: 999px;     /* ✅ FULL PILL ROUND */
  border: 1px solid #ccc;
+ outline: none;
 }
 
 /* .create-group-btn {
@@ -34,13 +49,36 @@
  background-color: black;
 }
 
-.chat-item {
+/* .chat-item {
  display: flex;
+ 
  align-items: center;
  padding: 1px;
  cursor: pointer;
  border-bottom: 1px solid black;
+} */
+
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;          /* ✅ enough height to show hover clearly */
+  cursor: pointer;
+  border-bottom: 1px solid #111; /* dark grey line */
+  width: 100%;            /* ✅ full row hover */
+  transition: background 0.2s ease; /* smooth hover */
 }
+
+.chat-item:hover{
+  background-color: #0a74da; /* ✅ blue hover */
+  color: white;               /* text color visible on blue */
+}
+
+
+/* .chat-item:hover{
+ background-color:white;
+} */
+
 
 .chat-item img {
  width: 45px;
@@ -129,4 +167,49 @@
  cursor: pointer;
  margin: 0;
  padding-right: 0.5rem;
+}
+
+
+/* hover menu css start */
+
+/* wrapper */
+.menu-wrapper{
+ position: relative;
+}
+
+/* button */
+.menu-btn{
+ background: transparent;
+ border: none;
+ color: white;
+ font-size: 22px;
+ cursor: pointer;
+}
+
+/* dropdown box */
+.dropdown-menu{
+ position: absolute;
+ top: 42px;
+ right: 0;
+ width: 160px;
+ background: black;
+ border-radius: 8px;
+ overflow: hidden;
+ box-shadow: 0 0 10px rgba(0,0,0,0.6);
+ z-index: 99;
+}
+
+/* dropdown links */
+.dropdown-menu a{
+ display: block;
+ padding: 10px 14px;
+ color: white;
+ text-decoration: none;
+ font-size: 14px;
+ transition: background 0.3s;
+}
+
+/* hover effect */
+.dropdown-menu a:hover{
+ background: #333;
 }
