@@ -198,6 +198,237 @@
 //   );
 // };
 
+// import { createContext, useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import API from "../api/api";
+
+// export const AuthContext = createContext();
+
+// export const AuthProvider = ({ children }) => {
+//   const navigate = useNavigate();
+//   const [user, setUser] = useState(null);
+
+//   // ✅ Check logged user on page reload
+//   useEffect(() => {
+//     const fetchUser = async () => {
+//       try {
+//         await API.get("/sanctum/csrf-cookie"); // CSRF cookie first
+//         const res = await API.get("/api/user"); // Get logged in user
+//         setUser(res.data);
+//       } catch {
+//         setUser(null);
+//       }
+//     };
+//     fetchUser();
+//   }, []);
+
+//   // ✅ LOGIN
+//   const login = async (formData) => {
+//     try {
+//       await API.get("/sanctum/csrf-cookie");  // CSRF cookie
+//       const res = await API.post("/login", formData); // session login
+//       setUser(res.data.user);
+//       navigate("/");
+//     } catch (err) {
+//       console.error("Login Error:", err);
+//       throw err;
+//     }
+//   };
+
+//   // ✅ REGISTER
+//   const register = async (formData) => {
+//     try {
+//       await API.get("/sanctum/csrf-cookie");  // CSRF cookie
+//       const res = await API.post("/register", formData); // session login
+//       setUser(res.data.user);
+//       navigate("/");
+//     } catch (err) {
+//       console.error("Register Error:", err);
+//       throw err;
+//     }
+//   };
+
+//   // ✅ LOGOUT
+//   const logout = async () => {
+//     try {
+//       await API.post("/logout"); // session logout
+//       setUser(null);
+//       navigate("/login");
+//     } catch (err) {
+//       console.error("Logout Error:", err);
+//     }
+//   };
+
+//   return (
+//     <AuthContext.Provider value={{ user, login, register, logout }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
+
+
+// import { createContext, useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import API from "../api/api";
+
+// export const AuthContext = createContext();
+
+// export const AuthProvider = ({ children }) => {
+//   const navigate = useNavigate();
+//   const [user, setUser] = useState(null);
+//   const [loading, setLoading] = useState(true);
+
+//   // ✅ Check existing login
+//   useEffect(() => {
+//     API.get("/user")
+//       .then((res) => setUser(res.data))
+//       .catch(() => setUser(null))
+//       .finally(() => setLoading(false));
+//   }, []);
+
+//   // ✅ LOGIN
+// const login = async (formData) => {
+//   try {
+//     await API.get("/sanctum/csrf-cookie");   // ✅ CSRF FIRST
+//     const res = await API.post("/login", formData);
+//     setUser(res.data);
+//     navigate("/");
+//   } catch (err) {
+//     console.error("Login Error:", err);
+//     throw err;
+//   }
+// };
+
+// // ✅ REGISTER
+// const register = async (formData) => {
+//   try {
+//     await API.get("/sanctum/csrf-cookie");   // ✅ CSRF FIRST
+//     const res = await API.post("/register", formData);
+//     setUser(res.data);
+//     navigate("/");
+//   } catch (err) {
+//     console.error("Register Error:", err);
+//     throw err;
+//   }
+// };
+
+
+//   // ✅ LOGOUT
+//   const logout = async () => {
+//     await API.post("/logout");
+//     setUser(null);
+//     navigate("/login");
+//   };
+
+//   return (
+//     <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
+
+// import { createContext, useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import API from "../api/api";
+
+// export const AuthContext = createContext();
+
+// export const AuthProvider = ({ children }) => {
+//   const navigate = useNavigate();
+//   const [user, setUser] = useState(null);
+
+//   useEffect(() => {
+//     const fetchUser = async () => {
+//       try {
+//         const res = await API.get("/user");   // ✅ sanctum call removed
+//         setUser(res.data);
+//       } catch {
+//         setUser(null);
+//       }
+//     };
+//     fetchUser();
+//   }, []);
+
+//   const login = async (data) => {
+//     const res = await API.post("/login", data);   // ✅ sanctum call removed
+//     setUser(res.data.user);
+//     navigate("/");
+//   };
+
+//   const register = async (data) => {
+//     const res = await API.post("/register", data);   // ✅ sanctum call removed
+//     setUser(res.data.user);
+//     navigate("/");
+//   };
+
+//   const logout = async () => {
+//     await API.post("/logout");
+//     setUser(null);
+//     navigate("/login");
+//   };
+
+//   return (
+//     <AuthContext.Provider value={{ user, login, register, logout }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
+
+
+// import { createContext, useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import API from "../api/api";
+
+// export const AuthContext = createContext();
+
+// export const AuthProvider = ({ children }) => {
+//   const navigate = useNavigate();
+//   const [user, setUser] = useState(null);
+
+//   // ✅ Check logged user on page reload
+//   useEffect(() => {
+//     const fetchUser = async () => {
+//       try {
+//         await API.get("/sanctum/csrf-cookie"); // ✅ MUST
+//         const res = await API.get("/user");
+//         setUser(res.data);
+//       } catch {
+//         setUser(null);
+//       }
+//     };
+//     fetchUser();
+//   }, []);
+
+//   // ✅ LOGIN
+//   // ✅ LOGIN
+// const login = async (data) => {
+//   const res = await API.post("/login", data);
+//   setUser(res.data.user);
+//   navigate("/");
+// };
+
+// // ✅ REGISTER
+// const register = async (data) => {
+//   const res = await API.post("/register", data);
+//   setUser(res.data.user);
+//   navigate("/");
+// };
+
+// // ✅ LOGOUT
+// const logout = async () => {
+//   await API.post("/logout");
+//   setUser(null);
+//   navigate("/login");
+// };
+
+
+//   return (
+//     <AuthContext.Provider value={{ user, login, register, logout }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
+
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api/api";
@@ -208,12 +439,11 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
-  // ✅ Check logged user on page reload
+  // ✅ Check logged user on page reload (SESSION)
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        await API.get("/sanctum/csrf-cookie"); // CSRF cookie first
-        const res = await API.get("/api/user"); // Get logged in user
+        const res = await API.get("/user");
         setUser(res.data);
       } catch {
         setUser(null);
@@ -223,40 +453,24 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // ✅ LOGIN
-  const login = async (formData) => {
-    try {
-      await API.get("/sanctum/csrf-cookie");  // CSRF cookie
-      const res = await API.post("/login", formData); // session login
-      setUser(res.data.user);
-      navigate("/");
-    } catch (err) {
-      console.error("Login Error:", err);
-      throw err;
-    }
+  const login = async (data) => {
+    const res = await API.post("/login", data);
+    setUser(res.data.user);
+    navigate("/");
   };
 
   // ✅ REGISTER
-  const register = async (formData) => {
-    try {
-      await API.get("/sanctum/csrf-cookie");  // CSRF cookie
-      const res = await API.post("/register", formData); // session login
-      setUser(res.data.user);
-      navigate("/");
-    } catch (err) {
-      console.error("Register Error:", err);
-      throw err;
-    }
+  const register = async (data) => {
+    const res = await API.post("/register", data);
+    setUser(res.data.user);
+    navigate("/");
   };
 
   // ✅ LOGOUT
   const logout = async () => {
-    try {
-      await API.post("/logout"); // session logout
-      setUser(null);
-      navigate("/login");
-    } catch (err) {
-      console.error("Logout Error:", err);
-    }
+    await API.post("/logout");
+    setUser(null);
+    navigate("/login");
   };
 
   return (
