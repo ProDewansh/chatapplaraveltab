@@ -1,0 +1,4 @@
+chat-frontend/node_modules/
+chat-frontend/.vite/
+chat-frontend/dist/
+.env
